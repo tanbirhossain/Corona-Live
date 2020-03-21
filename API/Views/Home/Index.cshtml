@@ -1,94 +1,20 @@
-﻿@model BLL.Model.CoronaReturnVM
-
+﻿
 @{
     ViewData["Title"] = "Index";
 }
-
 <h1>CORONA LIVE UPDATE</h1>
+<div id="loadIndex"></div>
 
-<ul class="list-group">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Total Cases
-        <span class="badge badge-primary badge-pill"> @Html.DisplayFor(modelItem => modelItem.Total.Total_Cases)</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Total New Cases
-        <span class="badge badge-primary badge-pill"> @Html.DisplayFor(modelItem => modelItem.Total.Total_New_Cases)</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Total Deaths
-        <span class="badge badge-primary badge-pill"> @Html.DisplayFor(modelItem => modelItem.Total.Total_Deaths)</span>
-    </li>
-</ul>
+<script>
+    $(document).ready(function () {
 
-<div class="table-responsive">
-    <table class="table table-sm">
-        <thead class="thead-light">
-            <tr>
-                <th>
-                    Country
-                </th>
-                <th>
-                    Total　Cases
-                </th>
-                <th>
-                    New　Cases
-                </th>
-                <th>
-                    Total　Deaths
-                </th>
-                <th>
-                    New　Deaths
-                </th>
-                <th>
-                    Total　Recovered
-                </th>
-                <th>
-                    Active　Cases
-                </th>
-                <th>
-                    Serious　Critical
-                </th>
-                <th>
-                    Tot　Cases
-                </th>
+        //----------------------
+        $.ajax({
+            type: 'GET',
+            url: '/Home/_Index/'
+        }).then(function (data) {
+            $('#loadIndex').html(data);
+        });
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.List)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Country)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Total_Cases)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.New_Cases)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Total_Deaths)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.New_Deaths)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Total_Recovered)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Active_Cases)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Serious_Critical)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tot_Cases)
-                    </td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+    });
+</script>

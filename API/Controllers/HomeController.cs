@@ -23,9 +23,13 @@ namespace API.Controllers
         public IActionResult Index()
         {
             
-            return View(_coronaService.GetTodayResult());
+            return View();
         }
 
+        public IActionResult _Index()
+        {
+            return View(_coronaService.GetTodayResult());
+        }
         public IActionResult Privacy()
         {
             return View();
