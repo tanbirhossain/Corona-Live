@@ -20,7 +20,6 @@ namespace BLL.Services
             var webGet = new HtmlWeb();
             if (webGet.Load(url) is HtmlDocument document)
             {
-
                 var nodes = document.DocumentNode.CssSelect("#main_table_countries_today tbody tr").ToList();
                 var _lastNode = nodes.Last();
                 nodes.Remove(_lastNode);
